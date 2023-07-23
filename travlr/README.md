@@ -1,22 +1,29 @@
 # cs465-fullstack
 CS-465 Full Stack Development with MEAN
-(Updated: 7/11/2023 - Kelly Lewis)
+(Updated: 7/22/2023 - Kelly Lewis)
 
-Module 3: 3-1 Assignment - Static HTML to Templates with JSON
+Module 4: 4-1 Assignment - NoSQL Databases, Models, and Schemas
 
 Added:
-    data sub-directory:
-        trips.json:
-            Input relevant data into json file.
+    database sub-directory:
+        travlr -> app_server -> database:
+            Moved models folder (/app_server -> /database)
+            Created db.js (/database)
+                Created Schema Layout and db data protocols
+
+    /Seed Screen Captures folder:
+        Screen captures of seed data:
+            Powershell, MongoDBCompass, and Studio3T.
 
 Updated:
-    controllers:
-        travel.js:
-            added new lines to handle data read from JSON.
+    /data:
+        trips.json -> formatting and added new seedgoose indexing.
     
-    views:
-        travel.hbs:
-            changed body information to create loop with JSON data.
+    /travlr:
+        Created .seedgooserc.js:
+            Seedgoose configuration file.
+        Modified package.json:
+            Debugging of seedgoose.
 
 EOF
 
