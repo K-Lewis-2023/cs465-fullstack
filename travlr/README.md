@@ -1,22 +1,28 @@
 # cs465-fullstack
 CS-465 Full Stack Development with MEAN
-(Updated: 7/11/2023 - Kelly Lewis)
+(Updated: 7/28/2023 - Kelly Lewis)
 
-Module 3: 3-1 Assignment - Static HTML to Templates with JSON
+Module 5: 5-1 Assignment - RESTful API
 
 Added:
-    data sub-directory:
-        trips.json:
-            Input relevant data into json file.
+    app_api sub-directory
+        controllers
+            trips.js
+                Added trip listing 
+                Added trip searching by code
+        routes
+            index.js
+                added references to trips methods
 
 Updated:
-    controllers:
-        travel.js:
-            added new lines to handle data read from JSON.
-    
-    views:
-        travel.hbs:
-            changed body information to create loop with JSON data.
+    moved database to app_api
+        all sub folders moved
+            updated db.js
+
+    travlr/app_server/views
+        updated travel.hbs
+            reference to findTripCode (app_api/controllers/trips.js)
+
 
 EOF
 

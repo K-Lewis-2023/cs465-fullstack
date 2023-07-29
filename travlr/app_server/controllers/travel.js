@@ -1,14 +1,53 @@
 
-var fs = require('fs');
+var request = require('request');
 
-var trips = JSON.parse(fs.readFileSync('./data/trips.json', 'utf8'));
+var apiOptions = {
+    server: 'http://localhost:3000'
+}
 
-/* Get Travel View */
-const travel = (req, res) => {
-    console.log('Inside app_server, controllers, travel.js, travel function');
-    res.render('travel', { title: 'Travlr Getaways', trips});
+/* Render Travel List */ 
+const renderTravelList = (req, res, responseBody) => {
+    let message = null;
+    let pageTitle = process.env.npm_package_description + ' - Travel';
+
+    if (!(responseBody instanceof Array)) {
+        message = 'API lookup error';
+        responseBody = [];
+    } else {
+        if (!responseBody.length) {
+            message = 'No trips exist in database!';
+        }
+    }
+
+    res.render('travel', {
+        title: pageTitle,
+        trips: responseBody,
+        message
+    });
+};
+
+/* Get Travel List View */
+const travelList = (req, res) => {
+    const path = '/api/trips';
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {},
+    };
+
+    console.info('>> travelController.travelList calling ' + requestOptions.url);
+
+    request(
+        requestOptions,
+        (err, { statusCode }, body) => {
+            if(err) {
+                console.error(err);
+            }
+            renderTravelList(req, res, body);
+        }
+    )
 }
 
 module.exports = {
-    travel
+    travelList
 };

@@ -30,7 +30,7 @@ mongoose.connection.on('disconnected', () => {
     console.log('disconnected');
 });
 
-if (process/platform === 'win32') {
+if (process.platform === 'win32') {
     const rl = readLine.createInterface({
         input: process.stdin,
         output: process.stdout
@@ -61,4 +61,4 @@ process.on('SIGTERM', () => {
 
 connect();
 
-require('./travlr');
+require('./models/travlr');
