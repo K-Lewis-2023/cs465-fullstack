@@ -45,7 +45,7 @@ export class TripDataService {
     console.log(formData);
 
     return this.http
-      .post(this.tripUrl, formData, httpOptions) //added httpOptions
+      .put(this.tripUrl + formData.code, formData, httpOptions) //added httpOptions
       .toPromise()
       .then(response => response as Trip[]) //respond with object
       .catch(this.handleError);
